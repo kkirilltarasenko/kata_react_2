@@ -1,0 +1,33 @@
+.movie__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.movie__nav--item {
+    width: 65px;
+    height: 32px;
+
+    font-size: 14px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.45);
+    color: rgba(0, 0, 0, 0.65);
+    cursor: pointer;
+
+    transition: all .3s ease;
+}
+
+.movie__nav--item:hover {
+    color: #1890FF;
+    border-bottom: 2px solid #1890FF;
+}
+
+.active {
+    color: #1890FF;
+    border-bottom: 2px solid #1890FF;
+}

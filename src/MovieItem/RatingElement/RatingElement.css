@@ -1,0 +1,28 @@
+.rating__element {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    border-width: 3px;
+    border-style: solid;
+}
+
+.low {
+    border-color: #E90000;
+}
+
+.middle {
+    border-color: #E97E00;
+}
+
+.high {
+    border-color: #E9D100;
+}
+
+.highest {
+    border-color: #66E900;
+}
