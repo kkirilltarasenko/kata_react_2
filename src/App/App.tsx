@@ -16,7 +16,7 @@ const App : FC = () => {
 
   const genres = useContext(Context);
 
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState(Array<Movie>);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -31,7 +31,7 @@ const App : FC = () => {
         return res.json();
       })
       .then((movies) => {
-        console.log(movies);
+        // console.log(movies);
         setMovies(movies.results);
         setLoading(false);
       })
@@ -43,9 +43,15 @@ const App : FC = () => {
   }
 
   const selectMovie = (movie: Movie) : void => {
-    console.log(movie);
     setStaredMovies([...staredMovies, movie]);
   }
+
+  const setStars = (movie: Movie, starsCount: number) : void => {
+    movie.stars = starsCount;
+  }
+
+  console.log(movies);
+  console.log(staredMovies);
 
   return (
     <Context.Provider value={genres}>
@@ -54,11 +60,11 @@ const App : FC = () => {
         {!rated ?
             <div>
               <MovieHeader setSearch={setSearch} />
-              <MovieList movies={movies} selectMovie={selectMovie}/>
+              <MovieList setStars={setStars} movies={movies} selectMovie={selectMovie}/>
               <MovieFooter page={page} setPage={setPage} />
             </div>
             :
-            <MovieRated  movies={staredMovies} />
+            <MovieRated setStars={setStars} movies={staredMovies} />
         }
       </div>
     </Context.Provider>

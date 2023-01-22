@@ -8,17 +8,18 @@ import MovieItem from '../MovieItem/MovieItem';
 
 interface MoviesProps {
     movies: Array<Movie>,
-    selectMovie: (movie: Movie) => void;
+    selectMovie: (movie: Movie) => void,
+    setStars: (movie: Movie, starCount: number) => void
 }
 
-const MovieList : FC<MoviesProps> = ( {movies, selectMovie} ) => {
+const MovieList : FC<MoviesProps> = ( {movies, selectMovie, setStars} ) => {
     const genres = useContext(Context).genres;
 
     return (
         <Row gutter={[32, 32]}>
             {movies.map(movie =>
                 <Col key={movie.id} span={12}>
-                    <MovieItem movie={movie} genres={genres} selectMovie={selectMovie} />
+                    <MovieItem setStars={setStars} movie={movie} genres={genres} selectMovie={selectMovie} />
                 </Col>
             )}
         </Row>

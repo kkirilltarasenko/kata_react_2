@@ -5,7 +5,8 @@ export interface Movie {
     poster_path: string,
     release_date: string,
     genre_ids: number[],
-    vote_average: number
+    vote_average: number,
+    stars: number
 }
 
 export interface Genre {

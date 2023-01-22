@@ -9,10 +9,11 @@ import RatingElement from './RatingElement/RatingElement';
 interface MovieProps {
     movie: Movie,
     genres: Array<Genre>,
-    selectMovie: (movie: Movie) => void;
+    selectMovie?: (movie: Movie) => void,
+    setStars: (movie: Movie, starCount: number) => void
 }
 
-const MovieItem : FC<MovieProps> = ({ movie, genres, selectMovie }) => {
+const MovieItem : FC<MovieProps> = ({ movie, genres, selectMovie , setStars}) => {
     const IMG_URL : string = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     const currentGenres : (Genre | null)[] = genres.map((el: Genre) => {
        if (movie.genre_ids.includes(el.id)) {
@@ -22,7 +23,9 @@ const MovieItem : FC<MovieProps> = ({ movie, genres, selectMovie }) => {
     }).filter((el: Genre | null) => el !== null);
 
     const rateMovie = (movie: Movie) : void => {
-       selectMovie(movie);
+        if (selectMovie) {
+            selectMovie(movie);
+        }
     }
 
     return (
@@ -47,7 +50,7 @@ const MovieItem : FC<MovieProps> = ({ movie, genres, selectMovie }) => {
                     movie.overview}
                 </h2>
                 <div className="movie__stars" onClick={() => rateMovie(movie)}>
-                    <Rate allowHalf />
+                    <Rate value={movie.stars} onChange={(f: number) => setStars(movie, f)} allowHalf allowClear={false} count={5} />
                 </div>
             </div>
         </div>

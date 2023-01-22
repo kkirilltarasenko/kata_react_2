@@ -1,15 +1,29 @@
-import React, { FC } from 'react';
-import { Empty } from 'antd';
+import React, {FC, useContext} from 'react';
+import {Col, Empty, Row} from 'antd';
 import './MovieRated.css';
+import MovieItem from "../MovieItem/MovieItem";
+import {Movie} from "../types/types";
+import Context from "../context/context";
 
 interface MovieRatedProps {
-    movies: any[]
+    movies: Movie[],
+    setStars: (movie: Movie, starCount: number) => void
 }
 
 
-const MovieRated : FC<MovieRatedProps> = ({ movies }) => {
+const MovieRated : FC<MovieRatedProps> = ({ movies, setStars }) => {
+    const genres = useContext(Context).genres;
+
     return movies.length !== 0 ? (
-        <div>Rated</div>
+        <div>
+            <Row gutter={[32, 32]}>
+                {movies.map(movie =>
+                    <Col key={movie.id + Math.random()} span={12}>
+                        <MovieItem setStars={setStars} movie={movie} genres={genres} />
+                    </Col>
+                )}
+            </Row>
+        </div>
     ) : (
         <div className="rated__empty">
             <Empty description="No movies here." />
