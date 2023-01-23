@@ -1,19 +1,20 @@
-import React, {FC} from 'react';
+import React, {FC, useContext} from 'react';
 import { Tag, Rate } from 'antd';
 import './MovieItem.css';
 import {Genre, Movie} from "../types/types";
 
 /* Components */
 import RatingElement from './RatingElement/RatingElement';
+import GenreContext from "../context/genreContext";
 
 interface MovieProps {
-    movie: Movie,
-    genres: Array<Genre>,
-    selectMovie?: (movie: Movie) => void,
-    setStars: (movie: Movie, starCount: number) => void
+    movie: Movie;
+    selectMovie?: (movie: Movie) => void;
+    setStars: (movie: Movie, starCount: number) => void;
 }
 
-const MovieItem : FC<MovieProps> = ({ movie, genres, selectMovie , setStars}) => {
+const MovieItem : FC<MovieProps> = ({ movie, selectMovie , setStars}) => {
+    const genres = useContext(GenreContext).genres;
     const IMG_URL : string = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     const currentGenres : (Genre | null)[] = genres.map((el: Genre) => {
        if (movie.genre_ids.includes(el.id)) {

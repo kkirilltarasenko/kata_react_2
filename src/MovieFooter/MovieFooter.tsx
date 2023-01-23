@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import { Pagination } from 'antd';
 import './MovieFooter.css';
 
@@ -7,7 +7,7 @@ interface FooterProps {
     setPage: (page: number) => void 
 }
 
-const MovieFooter : FC<FooterProps> = ({ page, setPage }) => {
+const MovieFooter = ({ page, setPage } : FooterProps): JSX.Element => {
     return (
         <div className="pagination">
             <Pagination 

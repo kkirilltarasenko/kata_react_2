@@ -1,11 +1,11 @@
 import React from 'react';
 import {Genre} from "../types/types";
 
-export interface GenresContext {
-    genres: Array<Genre>
+export interface ContextProps {
+    genres: Array<Genre>,
 }
 
-const Context = React.createContext<GenresContext>({
+const GenreContext = React.createContext<ContextProps>({
     genres: [
         {id: 28, body: 'Action'},
         {id: 12, body: 'Adventure'},
@@ -29,4 +29,4 @@ const Context = React.createContext<GenresContext>({
     ]
 });
 
-export default Context;
+export default GenreContext;

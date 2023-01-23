@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import { Input } from 'antd';
+import { InputEvent } from '../types/types';
 import debounce from 'lodash/debounce';
 import './MovieHeader.css';
 
@@ -8,7 +9,7 @@ interface MovieHeaderProps {
 }
 
 const MovieHeader : FC<MovieHeaderProps> = ({ setSearch }) => {
-    const updateSearch = (e: any) => setSearch(e?.target?.value);
+    const updateSearch = (e: InputEvent) => setSearch(e.target.value);
     const debounceSearch = debounce(updateSearch, 500);
 
     return (
