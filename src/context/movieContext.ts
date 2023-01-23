@@ -1,6 +1,5 @@
 import React from "react";
-import {Movie} from "../types/types";
-
+import { Movie } from "../types/types";
 
 const MovieContext = React.createContext<Movie[]>([]);
 
