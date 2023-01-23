@@ -4,7 +4,7 @@ import debounce from 'lodash/debounce';
 import './MovieHeader.css';
 
 interface MovieHeaderProps {
-    setSearch: (e: any) => void
+    setSearch: (e: string) => void
 }
 
 const MovieHeader : FC<MovieHeaderProps> = ({ setSearch }) => {

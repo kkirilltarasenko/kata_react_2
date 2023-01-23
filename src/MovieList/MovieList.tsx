@@ -16,7 +16,7 @@ const MovieList : FC<MoviesProps> = ( {movies, selectMovie, setStars} ) => {
     const genres = useContext(Context).genres;
 
     return (
-        <Row gutter={[32, 32]}>
+        <Row gutter={[32, 32]} wrap={true}>
             {movies.map(movie =>
                 <Col key={movie.id} span={12}>
                     <MovieItem setStars={setStars} movie={movie} genres={genres} selectMovie={selectMovie} />
